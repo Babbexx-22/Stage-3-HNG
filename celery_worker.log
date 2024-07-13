@@ -1,0 +1,81 @@
+nohup: ignoring input
+ 
+ -------------- celery@ip-172-31-0-120 v5.4.0 (opalescent)
+--- ***** ----- 
+-- ******* ---- Linux-6.8.0-1010-aws-x86_64-with-glibc2.39 2024-07-13 19:30:23
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x72f51917f380
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     rpc://
+- *** --- * --- .> concurrency: 2 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . tasks.log_time
+  . tasks.send_email
+
+[2024-07-13 19:30:23,823: WARNING/MainProcess] /home/ubuntu/app/venv/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-07-13 19:30:23,831: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+[2024-07-13 19:30:23,832: WARNING/MainProcess] /home/ubuntu/app/venv/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-07-13 19:30:23,835: INFO/MainProcess] mingle: searching for neighbors
+[2024-07-13 19:30:24,856: INFO/MainProcess] mingle: all alone
+[2024-07-13 19:30:24,872: INFO/MainProcess] celery@ip-172-31-0-120 ready.
+[2024-07-13 19:32:00,917: INFO/MainProcess] Task tasks.send_email[8da9ecbf-0f3d-40b1-9399-73ddabdafeb7] received
+[2024-07-13 19:32:02,008: INFO/ForkPoolWorker-2] Email sent to meempharm22@gmail.com
+
+Restarting celery worker (/home/ubuntu/app/venv/bin/celery -A tasks worker --loglevel=info)
+ 
+ -------------- celery@ip-172-31-0-120 v5.4.0 (opalescent)
+--- ***** ----- 
+-- ******* ---- Linux-6.8.0-1010-aws-x86_64-with-glibc2.39 2024-07-13 19:37:43
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7da276715be0
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     rpc://
+- *** --- * --- .> concurrency: 2 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . tasks.log_time
+  . tasks.send_email
+
+[2024-07-13 19:37:43,596: WARNING/MainProcess] /home/ubuntu/app/venv/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-07-13 19:37:43,603: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+[2024-07-13 19:37:43,604: WARNING/MainProcess] /home/ubuntu/app/venv/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-07-13 19:37:43,607: INFO/MainProcess] mingle: searching for neighbors
+[2024-07-13 19:37:44,627: INFO/MainProcess] mingle: all alone
+[2024-07-13 19:37:44,643: INFO/MainProcess] celery@ip-172-31-0-120 ready.
+[2024-07-13 19:43:15,232: INFO/MainProcess] Task tasks.send_email[9a9505d7-0304-44eb-864b-2224fac02a3a] received
+[2024-07-13 19:43:16,230: INFO/ForkPoolWorker-2] Email sent to meempharm22@gmail.com
+[2024-07-13 19:43:23,201: INFO/MainProcess] Task tasks.log_time[3fd3777a-3cb1-4516-8c2e-835a62e450bf] received
+[2024-07-13 19:43:23,202: INFO/ForkPoolWorker-2] Talk to me endpoint hit at 2024-07-13 19:43:23.202855
