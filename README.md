@@ -13,7 +13,6 @@ This project demonstrates how to set up a Flask application with Celery for back
 - [Using Celery](#using-celery)
 - [Endpoints](#endpoints)
 - [Logging](#logging)
-- [License](#license)
 
 ## Requirements
 
@@ -28,27 +27,27 @@ This project demonstrates how to set up a Flask application with Celery for back
 
 1. Clone the repository:
 
-    ```bash
-    git clone https://github.com/Babbexx-22/Stage-3-HNG.git
-    cd yourrepository
-    ```
+```
+git clone https://github.com/Babbexx-22/Stage-3-HNG.git
+cd yourrepository
+```
 
 2. Create and activate a virtual environment:
-
-    ```bash
-    python -m venv venv
-    source venv/bin/activate 
-    ```
+```
+python -m venv venv
+source venv/bin/activate 
+```
 
 3. Install the dependencies:
+```
+pip install flask celery
+```
 
-    ```bash
-    pip install flask celery
-  ```
 4. Install nginx and configure it to route request to your python backend. Edit your instance IP
 
+`sudo nano /etc/nginx/sites-available/messaging_log.conf`
+
 ```
-sudo nano /etc/nginx/sites-available/messaging_log.conf
 server {
     listen 80;
     server_name instance-IP;
@@ -61,7 +60,6 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
-
 ```
 
 ## Configuration
@@ -116,13 +114,12 @@ def log_time():
     from datetime import datetime
     logging.info(f'Talk to me endpoint hit at {datetime.now()}')
 )
-
 ```
+
 
 ## Logging Configuration
 
 Create a logging.conf file:
-
 ```
 [loggers]
 keys=root
@@ -145,11 +142,10 @@ args=('/var/log/messaging_system.log', 'a')
 
 [formatter_form01]
 format=%(asctime)s - %(name)s - %(levelname)s - %(message)s
-
 ```
 
-## main.py file configuration
 
+## main.py file configuration
 ```
 from flask import Flask, request
 from tasks import send_email, log_time
@@ -173,8 +169,8 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
 ```
+
 
 ## Running the Application
 
@@ -186,16 +182,13 @@ In your app directory, create a virtual environment, activate it and run your fl
 python -m venv venv
 source venv/bin/activate
 nohup python main.py > flask_app.log 2>&1 &
-
 ```
 
 Start celery worker
-
 ```
 python -m venv venv
 source venv/bin/activate
 nohup celery -A tasks worker --loglevel=info > celery_worker.log 2>&1 &
-
 ```
 
 Running ngrok
@@ -203,4 +196,15 @@ Install ngrok and finish up the necessary configuration and authentication.
 Run ngrok in the background
 
 ` nohup ngrok http 5000 `
+
+## Endpoints
+
+```
+/: Main endpoint with query parameters sendmail and talktome.
+/?sendmail=recipient@example.com: Sends an email to the specified recipient.
+/?talktome: Logs the current time.
+```
+
+## Logging
+Logs are written to `/var/log/messaging_system.log` as configured in the "logging.conf" file.
 
